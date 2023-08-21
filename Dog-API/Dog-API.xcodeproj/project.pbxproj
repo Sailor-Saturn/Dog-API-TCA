@@ -21,6 +21,10 @@
 		0BF45AAB2A8ED2B50079D4E5 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 0BF45AAA2A8ED2B50079D4E5 /* Alamofire */; };
 		0BF45AAE2A9138060079D4E5 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF45AAD2A9138060079D4E5 /* Endpoint.swift */; };
 		0BF45AB12A9263820079D4E5 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF45AB02A9263820079D4E5 /* NetworkService.swift */; };
+		0BF45AB42A941D910079D4E5 /* Logging in Frameworks */ = {isa = PBXBuildFile; productRef = 0BF45AB32A941D910079D4E5 /* Logging */; };
+		0BF45AB72A941E120079D4E5 /* Logger+Dependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF45AB62A941E120079D4E5 /* Logger+Dependency.swift */; };
+		0BF45AB92A941E190079D4E5 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF45AB82A941E190079D4E5 /* Logger.swift */; };
+		0BF45ABB2A9423000079D4E5 /* NetworkService+Dependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF45ABA2A9423000079D4E5 /* NetworkService+Dependency.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +60,9 @@
 		0BF45AA82A8ECE700079D4E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		0BF45AAD2A9138060079D4E5 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		0BF45AB02A9263820079D4E5 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		0BF45AB62A941E120079D4E5 /* Logger+Dependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Logger+Dependency.swift"; sourceTree = "<group>"; };
+		0BF45AB82A941E190079D4E5 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		0BF45ABA2A9423000079D4E5 /* NetworkService+Dependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkService+Dependency.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +72,7 @@
 			files = (
 				0BF45AAB2A8ED2B50079D4E5 /* Alamofire in Frameworks */,
 				0BF45A9E2A8EC1050079D4E5 /* Kingfisher in Frameworks */,
+				0BF45AB42A941D910079D4E5 /* Logging in Frameworks */,
 				0BF45A9B2A8EC0C20079D4E5 /* ComposableArchitecture in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -109,6 +117,7 @@
 		0BF45A6E2A8EC0A90079D4E5 /* Dog-API */ = {
 			isa = PBXGroup;
 			children = (
+				0BF45AB52A941E030079D4E5 /* Logger */,
 				0BF45AAF2A925C160079D4E5 /* Network */,
 				0BF45AA82A8ECE700079D4E5 /* Info.plist */,
 				0BF45AA32A8EC4390079D4E5 /* Model */,
@@ -159,8 +168,18 @@
 			isa = PBXGroup;
 			children = (
 				0BF45AB02A9263820079D4E5 /* NetworkService.swift */,
+				0BF45ABA2A9423000079D4E5 /* NetworkService+Dependency.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		0BF45AB52A941E030079D4E5 /* Logger */ = {
+			isa = PBXGroup;
+			children = (
+				0BF45AB62A941E120079D4E5 /* Logger+Dependency.swift */,
+				0BF45AB82A941E190079D4E5 /* Logger.swift */,
+			);
+			path = Logger;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -183,6 +202,7 @@
 				0BF45A9A2A8EC0C20079D4E5 /* ComposableArchitecture */,
 				0BF45A9D2A8EC1050079D4E5 /* Kingfisher */,
 				0BF45AAA2A8ED2B50079D4E5 /* Alamofire */,
+				0BF45AB32A941D910079D4E5 /* Logging */,
 			);
 			productName = "Dog-API";
 			productReference = 0BF45A6C2A8EC0A90079D4E5 /* Dog-API.app */;
@@ -260,6 +280,7 @@
 				0BF45A992A8EC0C20079D4E5 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
 				0BF45A9C2A8EC1050079D4E5 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				0BF45AA92A8ED2B50079D4E5 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				0BF45AB22A941D910079D4E5 /* XCRemoteSwiftPackageReference "swift-log" */,
 			);
 			productRefGroup = 0BF45A6D2A8EC0A90079D4E5 /* Products */;
 			projectDirPath = "";
@@ -303,12 +324,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0BF45AB72A941E120079D4E5 /* Logger+Dependency.swift in Sources */,
+				0BF45ABB2A9423000079D4E5 /* NetworkService+Dependency.swift in Sources */,
 				0BF45AA22A8EC36B0079D4E5 /* DogList.swift in Sources */,
 				0BF45AA52A8EC4420079D4E5 /* Dog.swift in Sources */,
 				0BF45A722A8EC0A90079D4E5 /* ContentView.swift in Sources */,
 				0BF45A702A8EC0A90079D4E5 /* Dog_APIApp.swift in Sources */,
 				0BF45AB12A9263820079D4E5 /* NetworkService.swift in Sources */,
 				0BF45AAE2A9138060079D4E5 /* Endpoint.swift in Sources */,
+				0BF45AB92A941E190079D4E5 /* Logger.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -665,6 +689,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		0BF45AB22A941D910079D4E5 /* XCRemoteSwiftPackageReference "swift-log" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-log.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -682,6 +714,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0BF45AA92A8ED2B50079D4E5 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		0BF45AB32A941D910079D4E5 /* Logging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0BF45AB22A941D910079D4E5 /* XCRemoteSwiftPackageReference "swift-log" */;
+			productName = Logging;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
