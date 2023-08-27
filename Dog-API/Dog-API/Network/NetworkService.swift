@@ -1,26 +1,10 @@
 import Foundation
 import Alamofire
 
-/// Service for all of the requests all of the requests for the D
-public struct PetService {
-    public let fetchList: (_ limit: Int, _ currentPage: Int) async throws -> Void
-    public let fetchImage: (_ imageRef: String) async throws -> Void
-}
-
-extension PetService {
-    public static func live(networkService: NetworkService) -> Self {
-        return .init(
-            fetchList: { limit, currentPage in
-                let response: NetworkService.Response<[Dog]> = networkService.apiRequest(endpoint: .list(limit: limit, page: currentPage))
-                
-            },
-            fetchImage: { imageRef in
-                let respo
-            
-        })
-    }
-}
-
+// Base Network that will be used in different services
+// Has all the boiler plate necessary to create async service calls
+// to other APIs.
+// Based with this approach to create a generic Network Service: https://github.com/ricardomsm/Networking/blob/main/Sources/Networking/Networking.swift
 public struct NetworkService {
     private var call: (Endpoint) async throws -> Data
 }
