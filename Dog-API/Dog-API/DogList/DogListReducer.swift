@@ -22,12 +22,11 @@ struct DogListReducer: Reducer {
     enum Action: Equatable {
         case fetchDogList
         case fetchDogListResponse(TaskResult<[Dog]>)
-        case dog(id: DetailedDogReducer.State.id, dog: DetailedDogReducer.State.dog)
+        case clickDog(id: DetailedDogReducer.State.ID, action: DetailedDogReducer.Action)
     }
     
     enum Cancellables {
-        case fetchingScheduleSlots
-        case fetchingLanguages
+        case fetchingDogList
     }
     
     @Dependency(\.petService) private var petService
@@ -45,20 +44,26 @@ struct DogListReducer: Reducer {
                             try await petService.fetchList(pageLimit, currentPage)
                         }
                     ))
-                }
+                }.cancellable(id: Cancellables.fetchingDogList)
             case .fetchDogListResponse(.success(let dogs)):
                 state.dataLoadingStatus = .success
                 state.dogList = IdentifiedArrayOf(
                     uniqueElements: dogs.map {
                         DetailedDogReducer.State(id: uuid(), dog: $0)
                     })
+                return .none
                 
             case .fetchDogListResponse(.failure(let error)):
                 state.dataLoadingStatus = .error
-                loggerService.log(error.localizedDescription, .error)
+                
+                return .run { _ in
+                    try await loggerService.log(error.localizedDescription, .error)
+                }
+            case .clickDog(id: let id, action: let action):
                 return .none
             }
-        }.forEach(\.dogList, action: /DogListReducer.Action.dog(id: dog:)) {
+        }
+        .forEach(\.dogList, action: /DogListReducer.Action.clickDog(id:action:)) {
             DetailedDogReducer()
         }
     }
